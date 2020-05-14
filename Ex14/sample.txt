@@ -1,0 +1,7 @@
+/* 
+  sample.txt
+  Ex14
+
+  Created by 瀬川健児 on 2020/05/07.
+  Copyright © 2020 瀬川健児. All rights reserved.
+*/
