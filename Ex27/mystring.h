@@ -41,6 +41,7 @@ class Output{
 protected:
     Menu  *mp = NULL;
 public:
+    virtual ~Output(){};
     virtual Printable &operator << (Printable &) = 0;
     void set(Menu *);
     void release();
