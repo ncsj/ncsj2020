@@ -8,7 +8,43 @@
 
 #include "mylib.hpp"
 
+/* これから記述するクラスと関数は、一時的なもです。
+ main()関数までは、例外を理解するための例題です。
+ */
+class Exception{
+public:
+    Exception(){ printf("Exception!\n"); }
+};
+
+/*
+ 引数 x:int    100未満の場合は成功。
+    成功した場合は0を、失敗した場合は-1を返す。
+ */
+void f(int x) throw (Exception){
+    if(x < 100){
+        printf("x : %d\n",x);
+    }
+    else{
+        throw Exception();
+    }
+}
+
 int main(){
+    int  x;
+    printf("x : ");
+    scanf("%d",&x);
+    
+    try{
+        f(x);
+    }
+    catch(Exception &r){
+        printf("The Exception is Caught.\n");
+    }
+    
+    return 0;
+}
+
+int _main(){
     using namespace MyLib;
     
     String  s;
