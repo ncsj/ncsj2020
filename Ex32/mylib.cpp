@@ -91,8 +91,9 @@ int String::length(){
 /*
  この関数は、String::number()関数のために作成
  汎用的に利用するには、この関数の置き場所も考えないといけない。
+ とりあえず、名前空間（MyLib）の中のものとする。
  */
-int power(int v,int n){
+int MyLib::power(int v,int n){
     int value = 1;
     for(int i=0;i<n;i++){
         value = value * v;
@@ -101,9 +102,33 @@ int power(int v,int n){
 }
 
 /*
+ Stringクラスのインスタンスが保持している文字列が、
+ 整数値へ変換しても大丈夫かをチェックする。
+ */
+int  String::check(){
+    int rtc = 0;
+    char *p = s;
+    while(*p != 0x00){
+        if((*p >= '0') && (*p <= '9')){
+            ;
+        }
+        else{
+            rtc = ERROR;
+        }
+        p++;
+    }
+    return rtc;
+}
+
+/*
  保持している文字列を、整数値（int）に変換する関数。
  */
-int String::number(){
+int String::number() throw(Exception){
+    int rtc = check();
+    if(rtc == ERROR){
+        throw Exception();
+    }
+    
     int  sum = 0;
     int len = (int)strlen(s);
     
@@ -116,32 +141,6 @@ int String::number(){
     
     return sum;
 }
-/*
- 以下の関数は、林くんがつくりました。
- written by hayashi.
- */
-/******************************************
-int String::number(){
-    int sum = 0;
-    int n = 0;
-    int i;
-    int len;
-    int x;
-    char c;
-    
-    len = (int)strlen(s);
-    for(i=0;i<len;i++){
-        c = *(s+i);
-        n = c - 0x30;
-        x = power(10,len-(i+1));
-        n = n * x;
-        sum = sum + n;
-    }
-    
-    return sum;
-}
- 
-*****************/
 
 /*
  加算（+）演算子のオーバーロード
@@ -156,3 +155,5 @@ String MyLib::operator + (const String &s1,const String &s2){
     
     return str;
 }
+
+
