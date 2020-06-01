@@ -1,0 +1,12 @@
+:filetype on
+:autocmd FileType c,cpp,cxx,java,js,perl set cindent
+:set tabstop=4
+:set softtabstop=4
+:set shiftwidth=4
+:set autoindent
+:set backspace=indent,eol,start
+:set shellslash
+:set formatoptions+=mM
+:set enc=utf-8
+:set fenc=utf-8
+:set fencs=iso-2022-jp,enc-jp,utf-8,cp932
